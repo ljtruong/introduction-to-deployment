@@ -144,15 +144,6 @@ export function ChatView() {
         )}
         <header className="flex shrink-0 items-center justify-between border-b px-4 py-3">
           <h1 className="text-lg font-semibold">Chat</h1>
-          <Button
-            type="button"
-            variant="ghost"
-            size="icon"
-            aria-label="More options"
-            className="size-9"
-          >
-            <MoreVertical className="size-5" />
-          </Button>
         </header>
         <CardContent className="flex min-h-0 flex-1 flex-col gap-2 p-0">
           <div className="relative flex min-h-0 flex-1 flex-col">
