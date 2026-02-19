@@ -2,6 +2,13 @@
 
 A small chat app: a **backend** (FastAPI, Python) and a **frontend** (Vite, React) that talk over HTTP. The backend handles sessions and streaming chat (mock or Gemini); the frontend is a single-page chat UI.
 
+**Contents**
+
+- [Requires](#requires)
+- [How to start the backend](#how-to-start-the-backend)
+- [How to start the frontend](#how-to-start-the-frontend)
+- [Deployment (GCP Cloud Run)](#deployment-gcp-cloud-run)
+
 ## Requires
 
 - **[uv](https://docs.astral.sh/uv/)** — Python package manager and runner for the backend
