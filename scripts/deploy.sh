@@ -4,6 +4,7 @@ set -euo pipefail
 
 TAG=${1:-}
 APP=${2:-}
+USE_GEMINI=${3:-}
 
 if [[ -z "$TAG" ]]; then
     echo "TAG is required. Should be your name"
@@ -21,6 +22,11 @@ PROJECT_ID=monash-deployment-intro
 REGION=australia-southeast1
 REPOSITORY=${REGION}-docker.pkg.dev/${PROJECT_ID}/${PROJECT_ID}-containers
 
+SECRETS_ARGS=""
+if [[ "$USE_GEMINI" == "true" && "$APP" == "backend" ]]; then
+  SECRETS_ARGS="--set-secrets=GOOGLE_API_KEY=GOOGLE_API_KEY:latest"
+fi
+
 CMD="gcloud run deploy $APP-$TAG \
   --region $REGION \
   --image $REPOSITORY/$APP-$TAG:latest \
@@ -28,7 +34,8 @@ CMD="gcloud run deploy $APP-$TAG \
   --allow-unauthenticated \
   --min-instances 0 \
   --min-instances 1 \
-  --concurrency 1"
+  --concurrency 1 \
+  $SECRETS_ARGS"
 
 eval $CMD
 
