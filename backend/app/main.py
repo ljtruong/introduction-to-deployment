@@ -2,7 +2,6 @@
 
 import asyncio
 import logging
-import os
 import time
 import uuid
 from collections.abc import AsyncGenerator
@@ -13,7 +12,7 @@ from fastapi.responses import StreamingResponse
 
 from app.chat_graph import chat_graph, last_message_content, session_to_messages
 from app.schemas import ChatRequest, ChatResponse, ChatStreamRequest, MessageOut, SessionResponse
-
+from app.config import config
 logger = logging.getLogger(__name__)
 
 app = FastAPI(
@@ -51,9 +50,9 @@ def _trim_messages(session_id: str) -> None:
 
 def _use_mock_chat() -> bool:
     """Use mock chat responses when API key is missing or MOCK_CHAT is set."""
-    if not os.environ.get("GOOGLE_API_KEY", "").strip():
+    if not config.google_api_key:
         return True
-    return os.environ.get("MOCK_CHAT", "").lower() in ("1", "true", "yes")
+    return config.mock_chat
 
 
 @app.get("/")

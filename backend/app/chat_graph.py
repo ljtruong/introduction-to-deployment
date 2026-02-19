@@ -6,7 +6,7 @@ from typing import Annotated, TypedDict
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph.graph import END, START, StateGraph
-
+from app.config import config
 # State: messages list with reducer so the node can append the assistant reply.
 class State(TypedDict):
     messages: Annotated[list[BaseMessage], operator.add]
@@ -14,9 +14,11 @@ class State(TypedDict):
 
 def _create_model() -> ChatGoogleGenerativeAI:
     """Create Gemini chat model. Uses GOOGLE_API_KEY from environment."""
+
+    google_api_key = config.google_api_key
     return ChatGoogleGenerativeAI(
         model="gemini-2.0-flash",
-        google_api_key=None,  # reads GOOGLE_API_KEY from env
+        google_api_key=google_api_key,
     )
 
 
