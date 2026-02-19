@@ -10,8 +10,8 @@ COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile
 
 # Build (optional: pass VITE_API_BASE_URL for backend URL at build time)
-ARG VITE_API_BASE_URL=
-ENV VITE_API_BASE_URL=${VITE_API_BASE_URL}
+ARG VITE_API_BACKEND_URL=
+ENV VITE_API_BACKEND_URL=${VITE_API_BACKEND_URL}
 COPY . .
 RUN pnpm build
 
@@ -22,6 +22,6 @@ FROM nginx:alpine
 COPY --from=builder /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 80
+EXPOSE 8080
 
 CMD ["nginx", "-g", "daemon off;"]

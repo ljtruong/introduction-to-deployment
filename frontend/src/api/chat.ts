@@ -1,6 +1,6 @@
 import type { ChatResponse, Message, SessionResponse } from '../types/chat';
 
-const base = (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? '';
+const base = (import.meta.env.VITE_API_BACKEND_URL as string | undefined) ?? '';
 
 export function getApiBaseUrl(): string {
   return base;

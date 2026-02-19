@@ -1,7 +1,7 @@
 import type { UIMessage } from 'ai';
 import { useChat } from '@ai-sdk/react';
 import { TextStreamChatTransport } from 'ai';
-import { ArrowDown, ArrowUp, MoreVertical } from 'lucide-react';
+import { ArrowDown, ArrowUp } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { createSession, getApiBaseUrl, getMessages } from '@/api/chat';
 import { useChatStore } from '@/store/chatStore';
