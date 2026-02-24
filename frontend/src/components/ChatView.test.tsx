@@ -1,9 +1,15 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { useChat } from '@ai-sdk/react';
 import { ChatView } from './ChatView';
 import * as chatApi from '@/api/chat';
 import { useChatStore } from '@/store/chatStore';
+
+vi.mock('@ai-sdk/react', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@ai-sdk/react')>();
+  return { ...actual, useChat: vi.fn(actual.useChat) };
+});
 
 vi.mock('@/api/chat', () => ({
   createSession: vi.fn(),
@@ -72,5 +78,62 @@ describe('ChatView', () => {
       expect(screen.getByText('Previous question')).toBeInTheDocument();
     });
     expect(screen.getByText('Previous answer')).toBeInTheDocument();
+  });
+
+  describe('loading indicator by status', () => {
+    const mockSendMessage = vi.fn();
+    const mockSetMessages = vi.fn();
+
+    beforeEach(() => {
+      useChatStore.getState().setSessionId('test-session-123');
+    });
+
+    it('shows loading indicator when status is submitted', () => {
+      vi.mocked(useChat).mockReturnValue({
+        messages: [],
+        sendMessage: mockSendMessage,
+        setMessages: mockSetMessages,
+        status: 'submitted',
+      } as ReturnType<typeof useChat>);
+      render(<ChatView />);
+      expect(screen.getByLabelText('Waiting for reply')).toBeInTheDocument();
+      expect(document.querySelector('[aria-busy="true"]')).toBeInTheDocument();
+    });
+
+    it('shows loading indicator when status is streaming', () => {
+      vi.mocked(useChat).mockReturnValue({
+        messages: [],
+        sendMessage: mockSendMessage,
+        setMessages: mockSetMessages,
+        status: 'streaming',
+      } as ReturnType<typeof useChat>);
+      render(<ChatView />);
+      expect(screen.getByLabelText('Waiting for reply')).toBeInTheDocument();
+      expect(document.querySelector('[aria-busy="true"]')).toBeInTheDocument();
+    });
+
+    it('does not show loading indicator when status is ready', () => {
+      vi.mocked(useChat).mockReturnValue({
+        messages: [],
+        sendMessage: mockSendMessage,
+        setMessages: mockSetMessages,
+        status: 'ready',
+      } as ReturnType<typeof useChat>);
+      render(<ChatView />);
+      expect(screen.queryByLabelText('Waiting for reply')).not.toBeInTheDocument();
+      expect(document.querySelector('[aria-busy="true"]')).not.toBeInTheDocument();
+    });
+
+    it('does not show loading indicator when status is error', () => {
+      vi.mocked(useChat).mockReturnValue({
+        messages: [],
+        sendMessage: mockSendMessage,
+        setMessages: mockSetMessages,
+        status: 'error',
+      } as ReturnType<typeof useChat>);
+      render(<ChatView />);
+      expect(screen.queryByLabelText('Waiting for reply')).not.toBeInTheDocument();
+      expect(document.querySelector('[aria-busy="true"]')).not.toBeInTheDocument();
+    });
   });
 });
