@@ -76,12 +76,25 @@ export function ChatView() {
     }
   }, [status]);
 
+  const scrollToBottom = () => {
+    if (typeof messagesEndRef.current?.scrollIntoView === 'function') {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+  };
+
   useEffect(() => {
+    if (status === 'submitted') {
+      scrollToBottom();
+    }
+  }, [status]);
+
+  useEffect(() => {
+    if (!(isAtBottom || status === 'submitted' || status === 'streaming')) return;
     if (typeof messagesEndRef.current?.scrollIntoView === 'function') {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
     setIsAtBottom(true);
-  }, [messages]);
+  }, [messages, status, isAtBottom]);
 
   useEffect(() => {
     const el = messagesContainerRef.current;
@@ -126,12 +139,7 @@ export function ChatView() {
       { text },
       { body: { session_id: sessionId! } },
     );
-  };
-
-  const scrollToBottom = () => {
-    if (typeof messagesEndRef.current?.scrollIntoView === 'function') {
-      messagesEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
-    }
+    requestAnimationFrame(() => scrollToBottom());
   };
 
   return (
