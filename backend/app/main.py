@@ -86,20 +86,27 @@ def get_session_messages(session_id: str) -> list[MessageOut]:
 
 def _get_mock_response_text(user_text: str) -> str:
     """Return a larger block of mock text for testing layout and scrolling."""
-    return f"""You asked: "{user_text}"
+    return f"""Great question! Here's a breakdown that should help.
 
-Here is a longer mock response so you can test scrolling and layout.
+**Understanding the topic**
 
-**First paragraph.** Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+When you ask something like "{user_text}", there are usually a few angles to consider. I'll walk through the main points so you have a clear picture.
 
-**Second paragraph.** Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+**Key points**
 
-**Third paragraph.** This block includes:
-- A bullet list item one
-- A bullet list item two
-- A bullet list item three
+1. **Context matters** — The answer often depends on your specific situation, constraints, or goals. If you can share a bit more about what you're trying to achieve, the advice can be more tailored.
 
-And a final sentence to make the mock response substantial enough for scroll testing. You can verify that the chat history scrolls correctly and that the loading state and text area behave as expected."""
+2. **Best practices** — In general, it helps to start simple, validate your approach, and then iterate. Don't feel you have to get everything right on the first try.
+
+3. **Common pitfalls** — People sometimes overlook setup steps, skip testing, or assume defaults that don't match their environment. Double-checking these can save time.
+
+**Next steps**
+
+- Try the simplest version first and see how it behaves.
+- If something doesn't work as expected, narrow it down (e.g., one change at a time).
+- You can always ask a follow-up with more detail if you want to go deeper.
+
+If you'd like, you can paste an error message or describe what you've tried so far, and we can troubleshoot from there."""
 
 
 def _extract_user_text(req: ChatStreamRequest) -> str:
