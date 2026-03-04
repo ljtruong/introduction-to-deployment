@@ -42,6 +42,13 @@ Build the frontend with that backend URL, then deploy:
 
 Open the frontend URL from the deploy output to use the app.
 
+## Google MCP setup (optional)
+
+Install google MCP
+```bash
+claude mcp add gcloud-mcp -- npx -y @google-cloud/gcloud-mcp
+```
+
 ## Local development
 
 See **`backend/README.md`** and **`frontend/README.md`** for running the backend and frontend locally (including Docker, env vars, and tests).
