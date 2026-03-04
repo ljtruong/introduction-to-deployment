@@ -15,7 +15,7 @@ A small chat app: a **backend** (FastAPI, Python) and a **frontend** (Vite, Reac
 - **Docker** (optional) — for building and running backend/frontend images; see `backend/README.md` and `frontend/README.md`
 - **gcloud CLI** — **Mac:** `brew install --cask gcloud-cli` · **Windows:** [Install the Google Cloud SDK](https://docs.cloud.google.com/sdk/docs/install-sdk#windows)
 
-1. Clone the repo
+1. Open your terminal and clone the repo
 ```bash
 git clone https://github.com/ljtruong/introduction-to-deployment.git
 ```
