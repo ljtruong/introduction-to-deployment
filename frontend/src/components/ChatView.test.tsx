@@ -90,11 +90,13 @@ describe('ChatView', () => {
 
     it('shows loading indicator when status is submitted', () => {
       vi.mocked(useChat).mockReturnValue({
+        id: 'test-id',
         messages: [],
         sendMessage: mockSendMessage,
         setMessages: mockSetMessages,
         status: 'submitted',
-      } as ReturnType<typeof useChat>);
+        error: undefined,
+      } as unknown as ReturnType<typeof useChat>);
       render(<ChatView />);
       expect(screen.getByLabelText('Waiting for reply')).toBeInTheDocument();
       expect(document.querySelector('[aria-busy="true"]')).toBeInTheDocument();
@@ -102,11 +104,13 @@ describe('ChatView', () => {
 
     it('shows loading indicator when status is streaming', () => {
       vi.mocked(useChat).mockReturnValue({
+        id: 'test-id',
         messages: [],
         sendMessage: mockSendMessage,
         setMessages: mockSetMessages,
         status: 'streaming',
-      } as ReturnType<typeof useChat>);
+        error: undefined,
+      } as unknown as ReturnType<typeof useChat>);
       render(<ChatView />);
       expect(screen.getByLabelText('Waiting for reply')).toBeInTheDocument();
       expect(document.querySelector('[aria-busy="true"]')).toBeInTheDocument();
@@ -114,11 +118,13 @@ describe('ChatView', () => {
 
     it('does not show loading indicator when status is ready', () => {
       vi.mocked(useChat).mockReturnValue({
+        id: 'test-id',
         messages: [],
         sendMessage: mockSendMessage,
         setMessages: mockSetMessages,
         status: 'ready',
-      } as ReturnType<typeof useChat>);
+        error: undefined,
+      } as unknown as ReturnType<typeof useChat>);
       render(<ChatView />);
       expect(screen.queryByLabelText('Waiting for reply')).not.toBeInTheDocument();
       expect(document.querySelector('[aria-busy="true"]')).not.toBeInTheDocument();
@@ -126,11 +132,13 @@ describe('ChatView', () => {
 
     it('does not show loading indicator when status is error', () => {
       vi.mocked(useChat).mockReturnValue({
+        id: 'test-id',
         messages: [],
         sendMessage: mockSendMessage,
         setMessages: mockSetMessages,
         status: 'error',
-      } as ReturnType<typeof useChat>);
+        error: undefined,
+      } as unknown as ReturnType<typeof useChat>);
       render(<ChatView />);
       expect(screen.queryByLabelText('Waiting for reply')).not.toBeInTheDocument();
       expect(document.querySelector('[aria-busy="true"]')).not.toBeInTheDocument();
