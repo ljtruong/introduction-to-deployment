@@ -6,6 +6,12 @@ export function getApiBaseUrl(): string {
   return base;
 }
 
+/** Lightweight request to wake a cold Cloud Run instance. Call as early as possible. */
+export function wakeBackend(): void {
+  const url = base ? `${base.replace(/\/$/, '')}/health` : '/health';
+  fetch(url).catch(() => {});
+}
+
 export async function createSession(): Promise<SessionResponse> {
   const res = await fetch(`${base}/sessions`, { method: 'POST' });
   if (!res.ok) throw new Error('Failed to create session');

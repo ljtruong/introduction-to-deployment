@@ -17,6 +17,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
+      '/health': { target: 'http://localhost:8000', changeOrigin: true },
       '/sessions': { target: 'http://localhost:8000', changeOrigin: true },
       '/chat': { target: 'http://localhost:8000', changeOrigin: true },
       '/chat/stream': { target: 'http://localhost:8000', changeOrigin: true },
