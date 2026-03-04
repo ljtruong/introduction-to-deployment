@@ -27,6 +27,11 @@ if [[ "$USE_GEMINI" == "true" && "$APP" == "backend" ]]; then
   SECRETS_ARGS="--set-secrets=GOOGLE_API_KEY=GOOGLE_API_KEY:latest"
 fi
 
+SESSION_AFFINITY_ARGS=""
+if [[ "$APP" == "backend" ]]; then
+  SESSION_AFFINITY_ARGS="--session-affinity"
+fi
+
 CMD="gcloud run deploy $APP-$TAG \
   --region $REGION \
   --image $REPOSITORY/$APP-$TAG:latest \
@@ -35,6 +40,7 @@ CMD="gcloud run deploy $APP-$TAG \
   --min-instances 0 \
   --min-instances 1 \
   --concurrency 1 \
+  $SESSION_AFFINITY_ARGS \
   $SECRETS_ARGS"
 
 eval $CMD
