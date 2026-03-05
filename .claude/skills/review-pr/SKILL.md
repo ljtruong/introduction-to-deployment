@@ -1,8 +1,3 @@
----
-name: review-pr
-description: Reviews pull requests against this project's PR format, frontend standards (pnpm, Vite, React, Tailwind, shadcn, AI SDK), and backend standards (uv, FastAPI, pytest). Use when the user asks to review a PR, review this PR, or check a pull request.
----
-
 # Review PR (Project-Specific)
 
 Review pull requests for the **introduction-to-deployment** repo using the project's PR expectations and code standards. Apply when the user asks to review a PR or "review this PR".

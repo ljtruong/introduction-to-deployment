@@ -1,8 +1,3 @@
----
-name: engineer-workflow
-description: End-to-end feature workflow: explore requirements, implement, branch from main, commit with create-git-commit, then push and open a PR using PULL_REQUEST.md. Use when the user wants to implement a feature, work through a task, or "do the full workflow" / "implement and open a PR".
----
-
 # Engineer Workflow
 
 Follow this workflow when implementing a feature or task from start to PR. Execute steps in order; use the linked skill and doc where indicated.

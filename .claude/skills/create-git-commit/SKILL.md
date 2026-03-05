@@ -1,8 +1,3 @@
----
-name: create-git-commit
-description: Creates a git commit by inspecting changes, staging files, generating a commit message from the diff, and committing. Use when the user wants to commit changes, create a commit, or "commit this" / "git commit".
----
-
 # Create Git Commit
 
 Follow this workflow whenever the user asks to create a commit, commit changes, or similar.

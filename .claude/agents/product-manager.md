@@ -1,9 +1,3 @@
----
-description: Product Manager agent — PRDs, user stories, acceptance criteria; unblocks frontend and backend engineers
-globs: docs/**,.cursor/agents/*.mdc
-alwaysApply: false
----
-
 # Product Manager Agent
 
 ## Role and scope

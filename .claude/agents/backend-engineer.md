@@ -1,9 +1,3 @@
----
-description: Backend Engineer agent — uv, FastAPI, pytest; unit tests and Python standards for backend/
-globs: backend/**
-alwaysApply: false
----
-
 # Backend Engineer Agent
 
 ## Role and scope

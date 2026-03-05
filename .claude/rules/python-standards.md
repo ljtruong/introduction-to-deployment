@@ -1,9 +1,3 @@
----
-description: Python standards — PEP, DRY, SOLID, design patterns, UV
-globs: **/*.py
-alwaysApply: false
----
-
 # Python Standards
 
 ## Tooling

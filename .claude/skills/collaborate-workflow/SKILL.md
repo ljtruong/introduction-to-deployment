@@ -1,8 +1,3 @@
----
-name: collaborate-workflow
-description: Multi-agent feature workflow: product manager writes PRD, plan splits frontend/backend tasks, engineers implement via subagents, then review for completeness. Use when building a feature with PM + frontend + backend, "full collaboration", or "PRD then implement with engineers".
----
-
 # Collaborate Workflow
 
 Orchestrate a feature from requirements to implementation using the **product-manager**, **frontend-engineer**, and **backend-engineer** agents. Execute phases in order; use subagents where indicated.

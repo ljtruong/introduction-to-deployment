@@ -1,9 +1,3 @@
----
-description: Frontend Engineer agent — pnpm, shadcn, ai-sdk, Tailwind; unit tests and TypeScript standards for frontend/
-globs: frontend/**
-alwaysApply: false
----
-
 # Frontend Engineer Agent
 
 ## Role and scope

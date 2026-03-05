@@ -1,9 +1,3 @@
----
-description: Frontend standards — pnpm, Vite, React, TypeScript, Tailwind, shadcn, AI SDK useChat, unit tests
-globs: frontend/**
-alwaysApply: false
----
-
 # Frontend Standards
 
 ## Tooling
