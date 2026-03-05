@@ -38,7 +38,7 @@ CMD="gcloud run deploy $APP-$TAG \
   --platform managed \
   --allow-unauthenticated \
   --min-instances 0 \
-  --min-instances 1 \
+  --max-instances 1 \
   --concurrency 1 \
   $SESSION_AFFINITY_ARGS \
   $SECRETS_ARGS"
