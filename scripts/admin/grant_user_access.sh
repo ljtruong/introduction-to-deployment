@@ -30,6 +30,11 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
   --member="user:$USER_EMAIL" \
   --role="roles/run.admin"
 
+# grant user access to view logs (e.g. gcloud logging read, Cloud Console Logs)
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member="user:$USER_EMAIL" \
+  --role="roles/logging.viewer"
+
 # grant user access to use developer role for cloud run
 PROJECT_NUMBER=$(gcloud projects describe ${PROJECT_ID} --format='value(projectNumber)')
 gcloud iam service-accounts add-iam-policy-binding \
